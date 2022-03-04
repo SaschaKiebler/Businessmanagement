@@ -1,0 +1,75 @@
+CREATE DATABASE Buisnessmanagement;
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+
+CREATE TABLE IF NOT EXISTS public.bill
+(
+    bill_id uuid NOT NULL DEFAULT uuid_generate_v4(),
+    cl_id uuid,
+    contract_id uuid,
+    bill_number character varying(25),
+    bill_description character varying(1500),
+    bill_sum integer,
+    CONSTRAINT bill_pkey PRIMARY KEY (bill_id)
+);
+
+CREATE TABLE IF NOT EXISTS public.client
+(
+    cl_id uuid NOT NULL DEFAULT uuid_generate_v4(),
+    cl_lastname character varying(300),
+    cl_dob date,
+    cl_firstname character varying(300),
+    CONSTRAINT pk_client PRIMARY KEY (cl_id)
+);
+
+CREATE TABLE IF NOT EXISTS public.contract
+(
+    contract_id uuid NOT NULL DEFAULT uuid_generate_v4(),
+    contract_name character varying(500),
+    contract_description character varying(1500),
+    contract_plannedstartdate date,
+    contract_startdate date,
+    contract_plannedenddate date,
+    contract_enddate date,
+    CONSTRAINT contract_pkey PRIMARY KEY (contract_id)
+);
+
+CREATE TABLE IF NOT EXISTS public.em_contract
+(
+    em_contract_id uuid NOT NULL DEFAULT uuid_generate_v4(),
+    em_id uuid,
+    contract_id uuid,
+    em_contract_hours integer,
+    CONSTRAINT em_contract_pkey PRIMARY KEY (em_contract_id)
+);
+
+CREATE TABLE IF NOT EXISTS public.employee
+(
+    em_id uuid NOT NULL DEFAULT uuid_generate_v4(),
+    em_firstname character varying(200),
+    em_lastname character varying(200),
+    em_dob date,
+    em_citizenship character varying(300),
+    em_cathlic character(1),
+    em_taxnumber character varying(20),
+    CONSTRAINT pk_em_id PRIMARY KEY (em_id)
+);
+
+ALTER TABLE IF EXISTS public.bill
+    ADD CONSTRAINT bill_cl_id_fkey FOREIGN KEY (cl_id)
+    REFERENCES public.client (cl_id);
+
+
+ALTER TABLE IF EXISTS public.bill
+    ADD CONSTRAINT contract_bill_fk FOREIGN KEY (contract_id)
+    REFERENCES public.contract (contract_id);
+
+
+ALTER TABLE IF EXISTS public.em_contract
+    ADD CONSTRAINT fk_em_contract_contract FOREIGN KEY (contract_id)
+    REFERENCES public.contract (contract_id);
+
+
+ALTER TABLE IF EXISTS public.em_contract
+    ADD CONSTRAINT fk_em_contract_em FOREIGN KEY (em_id)
+    REFERENCES public.employee (em_id);
