@@ -28,29 +28,37 @@ public class ContractService{
 
 
     public Contract getContractByID(String contract_id) {
-        return contractRepository.getContractByID(contract_id);
+        if (RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(contract_id))
+            return contractRepository.getContractByID(contract_id);
+
+        return null;
     }
 
 
     public List<Contract> getAllContractsFromClient(String cl_id) throws ClientNotFoundException{
+        if (RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(cl_id)){
         if (contractRepository.getAllContractsFromClient(cl_id).toArray().length==0)
             throw new ClientNotFoundException("client has no contracts");
 
-        return contractRepository.getAllContractsFromClient(cl_id);
+        return contractRepository.getAllContractsFromClient(cl_id);}
+        return null;
     }
 
 
     public void addContract(Contract contract) {
-        contractRepository.addContract(contract);
+        if(RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(contract.toString()))
+            contractRepository.addContract(contract);
     }
 
 
     public void updateContract(Contract contract) {
-        contractRepository.updateContract(contract);
+        if(RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(contract.toString()))
+            contractRepository.updateContract(contract);
     }
 
 
     public void deleteContract(String contract_id) {
-        contractRepository.deleteContract(contract_id);
+        if(RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(contract_id))
+            contractRepository.deleteContract(contract_id);
     }
 }
