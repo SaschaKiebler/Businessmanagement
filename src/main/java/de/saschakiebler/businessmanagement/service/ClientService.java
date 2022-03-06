@@ -28,14 +28,14 @@ public class ClientService {
     }
 
     public Client getClientByID(String cl_id){
-        if (RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(cl_id))
+        if (RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(cl_id))
             return clientRepository.getClientByID(cl_id);
 
         return null;
     }
 
     public List<Client> getClientByName(Client cl_name){
-        if (RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(cl_name.toString())){
+        if (RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(cl_name.toString())){
         String[] fAndLname = cl_name.getCl_firstname().split(" ");
         fAndLname[0]=fAndLname[0].toLowerCase(Locale.ROOT);
         if(fAndLname.length==1) {
@@ -49,7 +49,7 @@ public class ClientService {
     }
 
     public void addClient(Client client){
-        if(RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(client.toString()))
+        if(RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(client.toString()))
             clientRepository.addClient(client);
     }
 

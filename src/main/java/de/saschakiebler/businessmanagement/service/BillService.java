@@ -26,21 +26,21 @@ public class BillService {
 
     public Bill getBillByNumber(String billNumber){
 
-        if(RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(billNumber))
+        if(RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(billNumber))
             return billRepository.getBillByNumber(billNumber);
 
         return null;
     }
 
     public Bill getBillByID(String bill_id){
-        if (RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(bill_id))
+        if (RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(bill_id))
             return billRepository.getBillByID(bill_id);
 
         return null;
     }
 
     public List<Bill> getAllBillsFromClient(String client_id){
-        if (RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(client_id)) {
+        if (RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(client_id)) {
             Client client = clientRepository.getClientByID(client_id);
             return billRepository.getAllBillsFromClient(client);
         }
@@ -48,12 +48,12 @@ public class BillService {
     }
 
     public void updateBill(Bill bill){
-        if (RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(bill.toString()))
+        if (RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(bill.toString()))
         billRepository.updateBill(bill);
     }
 
     public void deleteBill(String bill_id){
-        if (RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(bill_id))
+        if (RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(bill_id))
         billRepository.deleteBill(bill_id);
     }
 }

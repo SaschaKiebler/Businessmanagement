@@ -2,7 +2,7 @@ package de.saschakiebler.businessmanagement.service;
 
 import java.util.Locale;
 
-public class RecognizeIllegalSQLStatements {
+public class RecognizeIllegalInputStatements {
 
     public static boolean recognizeAnySQLRelevantWords(String input){
         String inputToCheck = input.toLowerCase(Locale.ROOT);

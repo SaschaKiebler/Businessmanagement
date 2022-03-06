@@ -28,7 +28,7 @@ public class ContractService{
 
 
     public Contract getContractByID(String contract_id) {
-        if (RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(contract_id))
+        if (RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(contract_id))
             return contractRepository.getContractByID(contract_id);
 
         return null;
@@ -36,7 +36,7 @@ public class ContractService{
 
 
     public List<Contract> getAllContractsFromClient(String cl_id) throws ClientNotFoundException{
-        if (RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(cl_id)){
+        if (RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(cl_id)){
         if (contractRepository.getAllContractsFromClient(cl_id).toArray().length==0)
             throw new ClientNotFoundException("client has no contracts");
 
@@ -46,19 +46,19 @@ public class ContractService{
 
 
     public void addContract(Contract contract) {
-        if(RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(contract.toString()))
+        if(RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(contract.toString()))
             contractRepository.addContract(contract);
     }
 
 
     public void updateContract(Contract contract) {
-        if(RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(contract.toString()))
+        if(RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(contract.toString()))
             contractRepository.updateContract(contract);
     }
 
 
     public void deleteContract(String contract_id) {
-        if(RecognizeIllegalSQLStatements.recognizeAnySQLRelevantWords(contract_id))
+        if(RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(contract_id))
             contractRepository.deleteContract(contract_id);
     }
 }

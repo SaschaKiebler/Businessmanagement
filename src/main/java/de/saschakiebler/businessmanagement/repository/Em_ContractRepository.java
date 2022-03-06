@@ -23,8 +23,9 @@ public class Em_ContractRepository implements Em_ContractRepoInterface{
     }
 
     @Override
-    public void deleteEm_Contract(String em_contract_id) {
-        this.jdbcTemplate.execute("DELETE FROM em_contract WHERE contract_id='" + em_contract_id + "'");
+    public void deleteEm_Contract(Em_Contract em_contract) {
+        this.jdbcTemplate.execute("DELETE FROM em_contract " +
+                "WHERE contract_id='" + em_contract.getEm_contract_id() + "'");
     }
 
     @Override

@@ -8,7 +8,7 @@ import java.util.UUID;
 public interface Em_ContractRepoInterface {
 
     public void addEm_Contract(Em_Contract em_contract);
-    public void deleteEm_Contract(String em_contract_id);
+    public void deleteEm_Contract(Em_Contract em_contract);
     public void updateEm_Contract(Em_Contract em_contract);
     public Em_Contract getEm_ContractByID(String em_contract_id);
     public List<Em_Contract> getAllEm_Contract();
