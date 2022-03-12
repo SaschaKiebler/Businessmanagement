@@ -13,11 +13,14 @@ import java.util.List;
 @Service
 public class BillService {
 
-    @Autowired
     BillRepository billRepository;
 
-    @Autowired
     ClientRepository clientRepository;
+
+    public BillService(BillRepository billRepository, ClientRepository clientRepository) {
+        this.billRepository = billRepository;
+        this.clientRepository = clientRepository;
+    }
 
     public void addBill(Bill bill){
 

@@ -13,8 +13,12 @@ import java.util.UUID;
 @Repository
 public class BillRepository implements BillRepoInterface{
 
-    @Autowired
+
     JdbcTemplate jdbcTemplate;
+
+    public BillRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public void addBill(Bill bill) {

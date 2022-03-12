@@ -14,7 +14,7 @@ public class BillController {
 
     BillService billService;
 
-    @Autowired
+
     public BillController(BillService billService){
         this.billService=billService;
     }

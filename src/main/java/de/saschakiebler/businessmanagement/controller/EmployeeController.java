@@ -14,7 +14,6 @@ public class EmployeeController {
 
     EmployeeService employeeService;
 
-    @Autowired
     public EmployeeController(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }

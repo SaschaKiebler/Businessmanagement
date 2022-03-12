@@ -15,13 +15,10 @@ public class ClientService {
 
     ClientRepository clientRepository;
 
-    @Autowired
     public ClientService(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 
-    public ClientService() {
-    }
 
     public List<Client> getAllClients(){
         return clientRepository.getAllClients();

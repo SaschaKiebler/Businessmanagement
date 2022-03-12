@@ -1,9 +1,13 @@
 package de.saschakiebler.businessmanagement.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Objects;
 import java.util.UUID;
 
+
 public class Employee {
+
 
     private UUID em_id;
     private String em_firstname;

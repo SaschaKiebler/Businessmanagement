@@ -1,9 +1,13 @@
 package de.saschakiebler.businessmanagement.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import java.util.Objects;
 import java.util.UUID;
 
 public class Contract {
+
     UUID contract_id;
     String contract_name;
     String contract_description;

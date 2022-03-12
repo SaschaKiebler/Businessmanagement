@@ -11,8 +11,11 @@ import java.util.UUID;
 @Repository
 public class Em_ContractRepository implements Em_ContractRepoInterface{
 
-    @Autowired
     JdbcTemplate jdbcTemplate;
+
+    public Em_ContractRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public void addEm_Contract(Em_Contract em_contract) {

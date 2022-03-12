@@ -11,10 +11,12 @@ import java.util.UUID;
 @Repository
 public class ClientRepository implements ClientRepoInterface{
 
-    @Autowired
+
     JdbcTemplate jdbcTemplate;
 
-
+    public ClientRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public List<Client> getAllClients() {

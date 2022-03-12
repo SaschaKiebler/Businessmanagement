@@ -1,5 +1,11 @@
 package de.saschakiebler.businessmanagement.model;
 
+import org.hibernate.annotations.Type;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.util.UUID;
 
 public class Em_Contract {

@@ -14,7 +14,6 @@ public class Em_ContractController {
 
     Em_ContractService em_contractService;
 
-    @Autowired
     public Em_ContractController(Em_ContractService em_contractService) {
         this.em_contractService = em_contractService;
     }

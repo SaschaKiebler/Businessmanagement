@@ -11,8 +11,11 @@ import java.util.UUID;
 @Repository
 public class ContractRepository implements ContractRepoInterface{
 
-    @Autowired
     JdbcTemplate jdbcTemplate;
+
+    public ContractRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public List<Contract> getAllContracts() {

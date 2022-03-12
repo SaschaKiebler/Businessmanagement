@@ -14,7 +14,7 @@ public class ContractService{
     ContractRepository contractRepository;
     ClientService clientService;
 
-    @Autowired
+
     public ContractService(ContractRepository contractRepository, ClientService clientService) {
         this.contractRepository = contractRepository;
         this.clientService = clientService;

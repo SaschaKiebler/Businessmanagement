@@ -11,8 +11,11 @@ import java.util.UUID;
 @Repository
 public class EmployeeRepository implements EmployeeRepoInterface{
 
-    @Autowired
     JdbcTemplate jdbcTemplate;
+
+    public EmployeeRepository(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @Override
     public List<Employee> getAllEmployees() {

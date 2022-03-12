@@ -14,7 +14,7 @@ public class Em_ContractService {
 
     Em_ContractRepository em_contractRepository;
 
-    @Autowired
+
     public Em_ContractService(Em_ContractRepository em_contractRepository) {
         this.em_contractRepository = em_contractRepository;
     }

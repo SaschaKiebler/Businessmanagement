@@ -14,7 +14,7 @@ public class EmployeeService {
 
     EmployeeRepository employeeRepository;
 
-    @Autowired
+
     public EmployeeService(EmployeeRepository employeeRepository) {
         this.employeeRepository = employeeRepository;
     }

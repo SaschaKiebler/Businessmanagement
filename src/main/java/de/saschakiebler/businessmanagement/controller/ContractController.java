@@ -15,7 +15,6 @@ public class ContractController {
 
     ContractService contractService;
 
-    @Autowired
     public ContractController(ContractService contractService) {
         this.contractService = contractService;
     }
