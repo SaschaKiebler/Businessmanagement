@@ -7,7 +7,7 @@ import de.saschakiebler.businessmanagement.model.Bill;
 
 import java.util.List;
 @RestController
-@RequestMapping(path = "/bill")
+@RequestMapping(path = "api/v1/bill")
 @CrossOrigin("*")
 public class BillController {
 

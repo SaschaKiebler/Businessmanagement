@@ -66,7 +66,7 @@ public class BillRepository implements BillRepoInterface{
 
     @Override
     public List<Bill> getAllBillsFromClient(Client client) {
-        return this.jdbcTemplate.query("SELECT * FROM bill WHERE cl_id = '" + client.getCli_id() + "'" ,
+        return this.jdbcTemplate.query("SELECT * FROM bill WHERE cl_id = '" + client.getCl_id() + "'" ,
                 (rs, rowNum) -> new Bill(
                         UUID.fromString(rs.getString("bill_id")),
                         UUID.fromString(rs.getString("cl_id")),

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/em_contract")
+@RequestMapping(path = "api/v1/em_contract")
 public class Em_ContractController {
 
     Em_ContractService em_contractService;

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/client")
-@CrossOrigin("*")
+@RequestMapping(path = "api/v1/client")
+@CrossOrigin()
 public class ClientController {
 
     ClientService clientService;

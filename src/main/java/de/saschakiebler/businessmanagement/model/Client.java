@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public class Client {
 
-    private UUID cli_id;
+    private UUID cl_id;
     private String cl_firstname;
     private String cl_lastname;
     private String cl_dob;
@@ -28,19 +28,19 @@ public class Client {
         this.cl_dob = cl_dob;
     }
 
-    public Client(UUID cli_id, String cl_firstname, String cl_lastname, String cl_dob) {
-        this.cli_id = cli_id;
+    public Client(UUID cl_id, String cl_firstname, String cl_lastname, String cl_dob) {
+        this.cl_id = cl_id;
         this.cl_firstname = cl_firstname;
         this.cl_lastname = cl_lastname;
         this.cl_dob = cl_dob;
     }
 
-    public UUID getCli_id() {
-        return cli_id;
+    public UUID getCl_id() {
+        return cl_id;
     }
 
-    public void setCli_id(UUID cli_id) {
-        this.cli_id = cli_id;
+    public void setCl_id(UUID cli_id) {
+        this.cl_id = cli_id;
     }
 
     public String getCl_firstname() {
@@ -70,7 +70,7 @@ public class Client {
     @Override
     public String toString() {
         return "Client{" +
-                "cli_id=" + cli_id +
+                "cli_id=" + cl_id +
                 ", cl_firstname='" + cl_firstname + '\'' +
                 ", cl_lastname='" + cl_lastname + '\'' +
                 ", cl_dob='" + cl_dob + '\'' +
