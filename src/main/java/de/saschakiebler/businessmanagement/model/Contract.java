@@ -1,14 +1,11 @@
 package de.saschakiebler.businessmanagement.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import java.util.Objects;
 import java.util.UUID;
 
 public class Contract {
 
-    UUID contract_id;
+    UUID id;
     String contract_name;
     String contract_description;
     String contract_plannedstartdate;
@@ -19,8 +16,8 @@ public class Contract {
     public Contract() {
     }
 
-    public Contract(UUID contract_id, String contract_name, String contract_description, String contract_plannedstartdate, String contract_startdate, String contract_plannedenddate, String contract_enddate) {
-        this.contract_id = contract_id;
+    public Contract(UUID id, String contract_name, String contract_description, String contract_plannedstartdate, String contract_startdate, String contract_plannedenddate, String contract_enddate) {
+        this.id = id;
         this.contract_name = contract_name;
         this.contract_description = contract_description;
         this.contract_plannedstartdate = contract_plannedstartdate;
@@ -56,12 +53,12 @@ public class Contract {
         this.contract_startdate = contract_startdate;
     }
 
-    public UUID getContract_id() {
-        return contract_id;
+    public UUID getId() {
+        return id;
     }
 
-    public void setContract_id(UUID contract_id) {
-        this.contract_id = contract_id;
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getContract_name() {
@@ -115,7 +112,7 @@ public class Contract {
     @Override
     public String toString() {
         return "Contract{" +
-                "contract_id=" + contract_id +
+                "contract_id=" + id +
                 ", contract_name='" + contract_name + '\'' +
                 ", contract_description='" + contract_description + '\'' +
                 ", contract_plannedstartdate='" + contract_plannedstartdate + '\'' +

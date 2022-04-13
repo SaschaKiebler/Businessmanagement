@@ -38,6 +38,10 @@ public class Bill {
         this.bill_sum = bill_sum;
     }
 
+    public Bill(UUID bill_id) {
+        this.bill_id = bill_id;
+    }
+
     public UUID getBill_id() {
         return bill_id;
     }
