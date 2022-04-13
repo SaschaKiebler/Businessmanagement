@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static de.saschakiebler.businessmanagement.service.CheckIfStringIsValidUUID.*;
+import static de.saschakiebler.businessmanagement.service.RecognizeIllegalInputStatements.*;
+
 
 @Service
 public class BillService {
@@ -22,28 +25,30 @@ public class BillService {
         this.clientRepository = clientRepository;
     }
 
-    public void addBill(Bill bill){
 
-        billRepository.addBill(bill);
+
+    public boolean addBill(Bill bill){
+
+        return billRepository.addBill(bill);
     }
 
     public Bill getBillByNumber(String billNumber){
 
-        if(RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(billNumber))
+        if(recognizeAnySQLRelevantWords(billNumber))
             return billRepository.getBillByNumber(billNumber);
 
         return null;
     }
 
     public Bill getBillByID(String bill_id){
-        if (RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(bill_id))
+        if (recognizeAnySQLRelevantWords(bill_id) && checkIfStringIsValidUUID(bill_id))
             return billRepository.getBillByID(bill_id);
 
         return null;
     }
 
     public List<Bill> getAllBillsFromClient(String client_id){
-        if (RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(client_id)) {
+        if (recognizeAnySQLRelevantWords(client_id) && checkIfStringIsValidUUID(client_id)) {
             Client client = clientRepository.getClientByID(client_id);
             return billRepository.getAllBillsFromClient(client);
         }
@@ -51,12 +56,12 @@ public class BillService {
     }
 
     public void updateBill(Bill bill){
-        if (RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(bill.toString()))
+        if (recognizeAnySQLRelevantWords(bill.toString()))
         billRepository.updateBill(bill);
     }
 
     public void deleteBill(String bill_id){
-        if (RecognizeIllegalInputStatements.recognizeAnySQLRelevantWords(bill_id))
+        if (recognizeAnySQLRelevantWords(bill_id) && checkIfStringIsValidUUID(bill_id))
         billRepository.deleteBill(bill_id);
     }
 }

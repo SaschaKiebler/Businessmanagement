@@ -3,6 +3,7 @@ package de.saschakiebler.businessmanagement.repository;
 import de.saschakiebler.businessmanagement.model.Bill;
 import de.saschakiebler.businessmanagement.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -21,14 +22,19 @@ public class BillRepository implements BillRepoInterface{
     }
 
     @Override
-    public void addBill(Bill bill) {
-        this.jdbcTemplate.execute("INSERT INTO bill (cl_id,contract_id,bill_number,bill_description,bill_sum) " +
-                "VALUES ('"
-                + bill.getCl_id() + "','"
-                + bill.getContract_id() + "','"
-                + bill.getBill_number() + "','"
-                + bill.getBill_description() + "',"
-                + bill.getBill_sum() + ")");
+    public boolean addBill(Bill bill) {
+        try {
+            this.jdbcTemplate.execute("INSERT INTO bill (cl_id,contract_id,bill_number,bill_description,bill_sum) " +
+                    "VALUES ('"
+                    + bill.getCl_id() + "','"
+                    + bill.getContract_id() + "','"
+                    + bill.getBill_number() + "','"
+                    + bill.getBill_description() + "',"
+                    + bill.getBill_sum() + ")");
+        }catch (DataAccessException dataAccessException){
+            return false;
+        }
+        return true;
     }
 
     @Override

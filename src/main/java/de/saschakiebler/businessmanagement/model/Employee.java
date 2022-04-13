@@ -20,6 +20,10 @@ public class Employee {
     public Employee() {
     }
 
+    public Employee(UUID em_id) {
+        this.em_id = em_id;
+    }
+
     public Employee(UUID em_id, String em_firstname, String em_lastname, String em_dob, String em_citizenship, char em_cathlic, String em_taxnumber) {
         this.em_id = em_id;
         this.em_firstname = em_firstname;

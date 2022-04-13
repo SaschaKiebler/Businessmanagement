@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static de.saschakiebler.businessmanagement.service.CheckIfStringIsValidUUID.*;
 import static de.saschakiebler.businessmanagement.service.RecognizeIllegalInputStatements.*;
 
 @Service
@@ -24,7 +25,7 @@ public class EmployeeService {
     }
 
     public Employee getEmployeeById(String em_id){
-        if (recognizeAnySQLRelevantWords(em_id))
+        if (recognizeAnySQLRelevantWords(em_id) && checkIfStringIsValidUUID(em_id))
             return employeeRepository.getEmployeeById(em_id);
         else
             return null;

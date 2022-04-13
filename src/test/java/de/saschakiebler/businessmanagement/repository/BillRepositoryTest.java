@@ -18,27 +18,24 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.util.List;
+import static org.mockito.Mockito.*;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@JdbcTest
 class BillRepositoryTest {
 
-
-    @Autowired
-    JdbcTemplate jdbcTemplate;
 
 
 
     @Test
     void addBill() {
+    JdbcTemplate jdbcTemplate = mock(JdbcTemplate.class);
     BillRepository billRepository = new BillRepository(jdbcTemplate);
         UUID id = UUID.randomUUID();
         Bill bill = new Bill(id);
-    billRepository.addBill(bill);
+        //when(jdbcTemplate.execute());
 
-        assertEquals(bill, billRepository.getBillByID(id.toString()));
 
     }
 
