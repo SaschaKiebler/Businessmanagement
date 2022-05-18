@@ -2,7 +2,6 @@ package de.saschakiebler.businessmanagement.service;
 
 import de.saschakiebler.businessmanagement.model.Bill;
 import de.saschakiebler.businessmanagement.repository.BillRepository;
-import de.saschakiebler.businessmanagement.repository.ClientRepository;
 import org.junit.jupiter.api.Test;
 
 import java.util.UUID;

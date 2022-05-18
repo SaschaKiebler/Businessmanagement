@@ -65,11 +65,11 @@ public class ClientRepository implements ClientRepoInterface{
 
     @Override
     public void addClient(Client client) {
-        this.jdbcTemplate.execute("INSERT INTO client (cl_firstname, cl_lastname, cl_dob) VALUES ('"
+        this.jdbcTemplate.execute("BEGIN; INSERT INTO client (cl_firstname, cl_lastname, cl_dob) VALUES ('"
                 + client.getCl_firstname()
                 + "', '" + client.getCl_lastname()
                 + "', '" + client.getCl_dob()
-                + "')"
+                + "'); COMMIT;"
         );
     }
 }

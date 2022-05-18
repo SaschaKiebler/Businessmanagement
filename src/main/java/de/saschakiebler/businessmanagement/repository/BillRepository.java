@@ -24,13 +24,13 @@ public class BillRepository implements BillRepoInterface{
     @Override
     public boolean addBill(Bill bill) {
         try {
-            this.jdbcTemplate.execute("INSERT INTO bill (cl_id,contract_id,bill_number,bill_description,bill_sum) " +
+            this.jdbcTemplate.execute("BEGIN; INSERT INTO bill (cl_id,contract_id,bill_number,bill_description,bill_sum) " +
                     "VALUES ('"
                     + bill.getCl_id() + "','"
                     + bill.getContract_id() + "','"
                     + bill.getBill_number() + "','"
                     + bill.getBill_description() + "',"
-                    + bill.getBill_sum() + ")");
+                    + bill.getBill_sum() + "); COMMIT;");
         }catch (DataAccessException dataAccessException){
             return false;
         }
@@ -86,13 +86,13 @@ public class BillRepository implements BillRepoInterface{
 
     @Override
     public void updateBill(Bill bill) {
-        this.jdbcTemplate.execute("UPDATE bill SET "
+        this.jdbcTemplate.execute("BEGIN; UPDATE bill SET "
                 + "bill_description = '" + bill.getBill_description()
                 + "', bill_sum = " + bill.getBill_sum()
-                + " WHERE bill_id = '" + bill.getBill_id() + "'");
+                + " WHERE bill_id = '" + bill.getBill_id() + "'; COMMIT;");
     }
 
     public void deleteBill(String bill_id) {
-        this.jdbcTemplate.execute("DELETE FROM bill WHERE bill_id = '" + bill_id + "'");
+        this.jdbcTemplate.execute("BEGIN; DELETE FROM bill WHERE bill_id = '" + bill_id + "'; COMMIT;");
     }
 }
